@@ -36,6 +36,23 @@ body {
   padding-bottom: 150px;
   overflow-y: auto;
 }
+.default-text {
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 70vh;
+  padding: 0 10px;
+  text-align: center;
+  color: var(--text-color);
+}
+.default-text h1 {
+  font-size: 3.3rem;
+}
+.default-text p {
+  margin-top: 10px;
+  font-size: 1.1rem;
+}
 :where(.chat-container, textarea)::-webkit-scrollbar {
   width: 6px;
 }
@@ -73,7 +90,7 @@ body {
   color: var(--icon-color);
   visibility: hidden;
 }
-.chat:hover .chat-content span {
+.chat:hover .chat-content:not(:has(.typing-animation, .error)) span {
   visibility: visible;
 }
 .chat .chat-details {
@@ -91,6 +108,9 @@ body {
   white-space: pre-wrap;
   font-size: 1.05rem;
   padding: 0 50px 0 25px;
+}
+.chat .chat-details p.error {
+  color: #e55865;
 }
 span.material-symbols-rounded {
   user-select: none;
@@ -150,6 +170,8 @@ span.material-symbols-rounded {
   border: none;
   resize: none;
   font-size: 1rem;
+  max-height: 250px;
+  overflow-y: auto;
   border-radius: 4px;
   color: var(--text-color);
   padding: 15px 45px 15px 20px;
